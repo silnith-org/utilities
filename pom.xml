@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.silnith</groupId>
-	<artifactId>utilities-maven</artifactId>
+	<artifactId>utilities</artifactId>
 	<version>1.2.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Utilities-maven</name>
+	<name>Utilities</name>
 	<url>https://silnith.org/projects/utilities/</url>
 	<description>A small collection of utilities.</description>
 	<inceptionYear>2014</inceptionYear>
