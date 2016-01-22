@@ -1,2 +1,2 @@
 # utilities
-A couple handy utility classes such as a pair.
+A few handy utility classes such as a pair.
