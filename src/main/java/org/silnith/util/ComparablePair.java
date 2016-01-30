@@ -14,10 +14,8 @@ import java.beans.ConstructorProperties;
  * The ordering imposed by this class is based on the first element of the pair,
  * and only if the first comparison is equal is the second element checked.
  * 
- * @param <S>
- *        the type of the first element
- * @param <T>
- *        the type of the second element
+ * @param <S> the type of the first element
+ * @param <T> the type of the second element
  * @author <a href="mailto:silnith@gmail.com">Kent Rosenkoetter</a>
  */
 public class ComparablePair<S extends Comparable<? super S>, T extends Comparable<? super T>> extends Pair<S, T>
@@ -27,10 +25,8 @@ public class ComparablePair<S extends Comparable<? super S>, T extends Comparabl
      * Constructs a new pair with the given elements. Either or both elements
      * may be {@code null}.
      * 
-     * @param first
-     *        the first element
-     * @param second
-     *        the second element
+     * @param first the first element
+     * @param second the second element
      */
     @ConstructorProperties({ "first", "second" })
     public ComparablePair(final S first, final T second) {

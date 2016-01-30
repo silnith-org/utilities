@@ -14,10 +14,8 @@ import java.beans.ConstructorProperties;
  * in a {@link java.util.HashMap}, then a {@code Pair} of those elements is also
  * safe.
  * 
- * @param <S>
- *        the type of the first element
- * @param <T>
- *        the type of the second element
+ * @param <S> the type of the first element
+ * @param <T> the type of the second element
  * @author <a href="mailto:silnith@gmail.com">Kent Rosenkoetter</a>
  */
 public class Pair<S, T> {
@@ -30,10 +28,8 @@ public class Pair<S, T> {
      * Constructs a new pair with the given elements. Either or both elements
      * may be {@code null}.
      * 
-     * @param first
-     *        the first element
-     * @param second
-     *        the second element
+     * @param first the first element
+     * @param second the second element
      */
     @ConstructorProperties({ "first", "second" })
     public Pair(final S first, final T second) {
@@ -78,7 +74,7 @@ public class Pair<S, T> {
     }
     
     private boolean equalsOrNull(final Object a, final Object b) {
-        // return Objects.equals(a, b);
+//        return Objects.equals(a, b);
         if (a == null) {
             return b == null;
         } else {
