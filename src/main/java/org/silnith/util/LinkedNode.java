@@ -7,22 +7,21 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
+
 /**
  * An immutable, forwards-linked list. Instances of this list are created by
  * concatenating a new element onto the beginning of an existing list. The
  * advantage is that multiple lists can share the same tail safely, which can
  * provide memory savings for certain specific use-cases.
- * 
  * <p>
  * Lists of this type will always have at least one element if they are non-
  * {@code null}. An empty list cannot be represented by this implementation.
- * 
  * <p>
  * Users of the language Lisp will recognize this paradigm as similar to the
  * {@code car}, {@code cdr}, {@code cons} concept.
  * 
  * @param <E>
- *            the type of elements in this list
+ *        the type of elements in this list
  * @author <a href="mailto:silnith@gmail.com">Kent Rosenkoetter</a>
  */
 public class LinkedNode<E> extends AbstractSequentialList<E> {
@@ -32,7 +31,7 @@ public class LinkedNode<E> extends AbstractSequentialList<E> {
      * collection as returned by the collection&rsquo;s iterator.
      * 
      * @param c
-     *            the collection to copy
+     *        the collection to copy
      * @return a {@link LinkedNode} containing the elements of the collection
      */
     public static <T> LinkedNode<T> valueOf(final Collection<T> c) {
@@ -50,7 +49,7 @@ public class LinkedNode<E> extends AbstractSequentialList<E> {
      * list, in order.
      * 
      * @param list
-     *            the list to copy
+     *        the list to copy
      * @return a {@link LinkedNode} containing the elements of the list
      */
     public static <T> LinkedNode<T> valueOf(final List<T> list) {
@@ -75,7 +74,7 @@ public class LinkedNode<E> extends AbstractSequentialList<E> {
      * list, in order.
      * 
      * @param node
-     *            the list to copy
+     *        the list to copy
      * @return a {@link LinkedNode} containing the elements of the list
      */
     public static <T> LinkedNode<T> valueOf(final LinkedNode<T> node) {
@@ -86,13 +85,13 @@ public class LinkedNode<E> extends AbstractSequentialList<E> {
     
     private final LinkedNode<E> next;
     
-// private final int size;
+    // private final int size;
     
     /**
      * Creates a new list with one element.
      * 
      * @param e
-     *            the element to put in the list
+     *        the element to put in the list
      */
     public LinkedNode(final E e) {
         this(e, null);
@@ -102,23 +101,23 @@ public class LinkedNode<E> extends AbstractSequentialList<E> {
      * Appends one element to the start of an existing list as a new list.
      * 
      * @param e
-     *            the element to prepend to the list
+     *        the element to prepend to the list
      * @param list
-     *            the list to extend
+     *        the list to extend
      */
     public LinkedNode(final E e, final LinkedNode<E> list) {
         super();
         this.value = e;
         this.next = list;
-// if (list == null) {
-// this.size = 1;
-// } else {
-// if (list.size == Integer.MAX_VALUE) {
-// this.size = Integer.MAX_VALUE;
-// } else {
-// this.size = list.size + 1;
-// }
-// }
+        // if (list == null) {
+        // this.size = 1;
+        // } else {
+        // if (list.size == Integer.MAX_VALUE) {
+        // this.size = Integer.MAX_VALUE;
+        // } else {
+        // this.size = list.size + 1;
+        // }
+        // }
     }
     
     /**
@@ -146,7 +145,7 @@ public class LinkedNode<E> extends AbstractSequentialList<E> {
         int size = 1;
         LinkedNode<E> next = this.next;
         while (next != null && size < Integer.MAX_VALUE) {
-            size++;
+            size++ ;
             next = next.next;
         }
         return size;
@@ -158,19 +157,18 @@ public class LinkedNode<E> extends AbstractSequentialList<E> {
      * formally, returns the highest index <var>i</var> such that
      * {@code (o==null ? get(i)==null : o.equals(get(i)))}, or {@code -1} if
      * there is no such index.
-     * 
      * <p>
      * This implementation iterates forward over the entire list and returns the
      * index of the last element found. It must iterate the entire list because
      * this type of list cannot be iterated backwards.
      * 
      * @param o
-     *            {@inheritDoc}
+     *        {@inheritDoc}
      * @return {@inheritDoc}
      * @throws ClassCastException
-     *             {@inheritDoc}
+     *         {@inheritDoc}
      * @throws NullPointerException
-     *             {@inheritDoc}
+     *         {@inheritDoc}
      */
     @Override
     public int lastIndexOf(final Object o) {
@@ -215,7 +213,7 @@ public class LinkedNode<E> extends AbstractSequentialList<E> {
                     throw new IndexOutOfBoundsException();
                 }
                 this.position = this.position.next;
-                this.index++;
+                this.index++ ;
             }
         }
         
@@ -231,7 +229,7 @@ public class LinkedNode<E> extends AbstractSequentialList<E> {
             }
             final E val = position.value;
             position = position.next;
-            index++;
+            index++ ;
             return val;
         }
         

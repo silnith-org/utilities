@@ -1,8 +1,12 @@
 package org.silnith.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
 
 public class PairTest {
     
@@ -39,8 +43,7 @@ public class PairTest {
     @Test
     public void testEquals() {
         pair = new Pair<Integer, String>(5, "foo");
-        final Pair<Integer, String> otherPair = new Pair<Integer, String>(5,
-                "foo");
+        final Pair<Integer, String> otherPair = new Pair<Integer, String>(5, "foo");
         
         assertTrue(pair.equals(otherPair));
         assertEquals(pair.hashCode(), otherPair.hashCode());

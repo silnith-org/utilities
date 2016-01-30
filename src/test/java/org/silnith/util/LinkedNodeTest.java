@@ -1,12 +1,17 @@
 package org.silnith.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import org.junit.Test;
+
 
 public class LinkedNodeTest {
     
@@ -78,7 +83,7 @@ public class LinkedNodeTest {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
         final Iterator<String> iterator = list.iterator();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++ ) {
             assertTrue("iteration " + i, iterator.hasNext());
         }
     }
@@ -256,7 +261,7 @@ public class LinkedNodeTest {
     public void testGetWithUnderflow() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.get(-1);
+        list.get( -1);
     }
     
     @Test(expected = IndexOutOfBoundsException.class)
@@ -333,31 +338,31 @@ public class LinkedNodeTest {
     public void testListIteratorAtIndexUnderflow() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.listIterator(-1);
+        list.listIterator( -1);
     }
     
     @Test
     public void testListIteratorAtIndexEndWithLongList() {
-        final LinkedNode<String> list = new LinkedNode<String>("foo",
-                new LinkedNode<String>("bar", new LinkedNode<String>("baz")));
-        
+        final LinkedNode<String> list =
+                new LinkedNode<String>("foo", new LinkedNode<String>("bar", new LinkedNode<String>("baz")));
+                
         assertNotNull(list.listIterator(3));
     }
     
     @Test(expected = IndexOutOfBoundsException.class)
     public void testListIteratorAtIndexOverflowWithLongList() {
-        final LinkedNode<String> list = new LinkedNode<String>("foo",
-                new LinkedNode<String>("bar", new LinkedNode<String>("baz")));
-        
+        final LinkedNode<String> list =
+                new LinkedNode<String>("foo", new LinkedNode<String>("bar", new LinkedNode<String>("baz")));
+                
         list.listIterator(4);
     }
     
     @Test(expected = IndexOutOfBoundsException.class)
     public void testListIteratorAtIndexUnderflowWithLongList() {
-        final LinkedNode<String> list = new LinkedNode<String>("foo",
-                new LinkedNode<String>("bar", new LinkedNode<String>("baz")));
-        
-        list.listIterator(-1);
+        final LinkedNode<String> list =
+                new LinkedNode<String>("foo", new LinkedNode<String>("bar", new LinkedNode<String>("baz")));
+                
+        list.listIterator( -1);
     }
     
     @Test

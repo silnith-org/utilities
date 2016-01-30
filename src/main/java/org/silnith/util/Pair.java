@@ -2,10 +2,10 @@ package org.silnith.util;
 
 import java.beans.ConstructorProperties;
 
+
 /**
  * A simple class that can hold two elements. Instances of this class are
  * immutable.
- * 
  * <p>
  * This is a two-element tuple. Either or both elements may be {@code null}.
  * This class overrides the {@link #equals(Object)} and {@link #hashCode()}
@@ -15,9 +15,9 @@ import java.beans.ConstructorProperties;
  * safe.
  * 
  * @param <S>
- *            the type of the first element
+ *        the type of the first element
  * @param <T>
- *            the type of the second element
+ *        the type of the second element
  * @author <a href="mailto:silnith@gmail.com">Kent Rosenkoetter</a>
  */
 public class Pair<S, T> {
@@ -31,9 +31,9 @@ public class Pair<S, T> {
      * may be {@code null}.
      * 
      * @param first
-     *            the first element
+     *        the first element
      * @param second
-     *            the second element
+     *        the second element
      */
     @ConstructorProperties({ "first", "second" })
     public Pair(final S first, final T second) {
@@ -78,7 +78,7 @@ public class Pair<S, T> {
     }
     
     private boolean equalsOrNull(final Object a, final Object b) {
-// return Objects.equals(a, b);
+        // return Objects.equals(a, b);
         if (a == null) {
             return b == null;
         } else {
@@ -90,8 +90,7 @@ public class Pair<S, T> {
     public boolean equals(final Object obj) {
         if (obj instanceof Pair) {
             final Pair<?, ?> pair = (Pair<?, ?>) obj;
-            return equalsOrNull(first, pair.first)
-                    && equalsOrNull(second, pair.second);
+            return equalsOrNull(first, pair.first) && equalsOrNull(second, pair.second);
         } else {
             return false;
         }
