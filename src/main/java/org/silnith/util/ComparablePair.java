@@ -61,7 +61,7 @@ public class ComparablePair<S extends Comparable<? super S>, T extends Comparabl
     
     @Override
     public String toString() {
-        return "ComparablePair<" + getFirst() + ", " + getSecond() + ">";
+        return "ComparablePair<" + getFirst() + ", " + getSecond() + "<";
     }
     
 }
