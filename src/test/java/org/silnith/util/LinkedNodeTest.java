@@ -1,16 +1,17 @@
 package org.silnith.util;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 
 public class LinkedNodeTest {
@@ -84,7 +85,7 @@ public class LinkedNodeTest {
         
         final Iterator<String> iterator = list.iterator();
         for (int i = 0; i < 10; i++ ) {
-            assertTrue("iteration " + i, iterator.hasNext());
+            assertTrue(iterator.hasNext(), "iteration " + i);
         }
     }
     
@@ -96,13 +97,13 @@ public class LinkedNodeTest {
         assertEquals("foo", iterator.next());
     }
     
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void testIteratorNextRemoveFails() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
         final Iterator<String> iterator = list.iterator();
         iterator.next();
-        iterator.remove();
+        assertThrows(UnsupportedOperationException.class, () -> iterator.remove());
     }
     
     @Test
@@ -114,13 +115,13 @@ public class LinkedNodeTest {
         assertFalse(iterator.hasNext());
     }
     
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void testIteratorSecondNextFails() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
         final Iterator<String> iterator = list.iterator();
         iterator.next();
-        iterator.next();
+        assertThrows(NoSuchElementException.class, () -> iterator.next());
     }
     
     /*
@@ -169,18 +170,18 @@ public class LinkedNodeTest {
         assertArrayEquals(new String[] { "foo" }, list.toArray(new String[0]));
     }
     
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void testAdd() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.add("bar");
+        assertThrows(UnsupportedOperationException.class, () -> list.add("bar"));
     }
     
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void testRemove() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.remove("foo");
+        assertThrows(UnsupportedOperationException.class, () -> list.remove("foo"));
     }
     
     @Test
@@ -197,18 +198,18 @@ public class LinkedNodeTest {
         assertTrue(list.containsAll(Collections.singleton("foo")));
     }
     
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void testAddAll() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.addAll(Collections.singleton("bar"));
+        assertThrows(UnsupportedOperationException.class, () -> list.addAll(Collections.singleton("bar")));
     }
     
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void testRemoveAll() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.removeAll(Collections.singleton("foo"));
+        assertThrows(UnsupportedOperationException.class, () -> list.removeAll(Collections.singleton("foo")));
     }
     
     @Test
@@ -225,29 +226,29 @@ public class LinkedNodeTest {
         assertFalse(list.retainAll(Collections.singleton("foo")));
     }
     
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void testRetainAllMiss() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.retainAll(Collections.singleton("bar"));
+        assertThrows(UnsupportedOperationException.class, () -> list.retainAll(Collections.singleton("bar")));
     }
     
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void testClear() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.clear();
+        assertThrows(UnsupportedOperationException.class, () -> list.clear());
     }
     
     /*
      * Methods from java.util.List
      */
     
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void testAddAllAtIndex() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.addAll(0, Collections.singleton("bar"));
+        assertThrows(UnsupportedOperationException.class, () -> list.addAll(0, Collections.singleton("bar")));
     }
     
     @Test
@@ -257,39 +258,39 @@ public class LinkedNodeTest {
         assertEquals("foo", list.get(0));
     }
     
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testGetWithUnderflow() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.get( -1);
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get( -1));
     }
     
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testGetWithOverflow() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.get(1);
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get(1));
     }
     
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void testSet() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.set(0, "bar");
+        assertThrows(UnsupportedOperationException.class, () -> list.set(0, "bar"));
     }
     
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void testAddAtIndex() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.add(0, "bar");
+        assertThrows(UnsupportedOperationException.class, () -> list.add(0, "bar"));
     }
     
-    @Test(expected = UnsupportedOperationException.class)
+    @Test
     public void testRemoveIndex() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.remove(0);
+        assertThrows(UnsupportedOperationException.class, () -> list.remove(0));
     }
     
     @Test
@@ -327,18 +328,18 @@ public class LinkedNodeTest {
         assertNotNull(list.listIterator(1));
     }
     
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testListIteratorAtIndexOverflow() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.listIterator(2);
+        assertThrows(IndexOutOfBoundsException.class, () -> list.listIterator(2));
     }
     
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testListIteratorAtIndexUnderflow() {
         final LinkedNode<String> list = new LinkedNode<String>("foo");
         
-        list.listIterator( -1);
+        assertThrows(IndexOutOfBoundsException.class, () -> list.listIterator( -1));
     }
     
     @Test
@@ -349,20 +350,20 @@ public class LinkedNodeTest {
         assertNotNull(list.listIterator(3));
     }
     
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testListIteratorAtIndexOverflowWithLongList() {
         final LinkedNode<String> list =
                 new LinkedNode<String>("foo", new LinkedNode<String>("bar", new LinkedNode<String>("baz")));
                 
-        list.listIterator(4);
+        assertThrows(IndexOutOfBoundsException.class, () -> list.listIterator(4));
     }
     
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testListIteratorAtIndexUnderflowWithLongList() {
         final LinkedNode<String> list =
                 new LinkedNode<String>("foo", new LinkedNode<String>("bar", new LinkedNode<String>("baz")));
                 
-        list.listIterator( -1);
+        assertThrows(IndexOutOfBoundsException.class, () -> list.listIterator( -1));
     }
     
     @Test
